@@ -1,0 +1,5 @@
+class AddBannerToEvents < ActiveRecord::Migration[5.1]
+  def change
+    add_column :events, :banner, :string
+  end
+end
