@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  mount_uploader :banner, BannerUploader
+  
   belongs_to :event_category
   has_many :purchases
   

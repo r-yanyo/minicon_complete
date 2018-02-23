@@ -1,9 +1,15 @@
+<%= page_entries_info @events %>
+
 <div class="row ">
   <div class="eight columns">
     <% @events.each do |event| %>
       <card class="event-card">
         <h4><%= event.title %></h4>
-        <img src="http://via.placeholder.com/540x300">
+        <% if !event.banner.blank? %>
+          <%= image_tag event.banner %>
+        <% else %>
+          <img src="http://via.placeholder.com/540x300">
+        <% end %>
         <div class="row">
           <div class="six columns">
             <p class="major-info"><%= event.location %></p>
@@ -21,15 +27,21 @@
     <card class="categories-card">
       <h4>Categories</h4>
       <ul>
-        <li><a>KONKATSU</a></li>
-        <li><a>KOIKATSU</a></li>  
-        <li><a>GOURMET</a></li>
+        <% @event_categories.each do |category| %>
+          <li><%= link_to category.name, category: category.name.downcase %></li>
+        <% end %>
       </ul>
     </card>
     <card class="search-card">
       <h4>Search</h4>
-      <input class="u-full-width" type="text">
-      <a class='button button-primary u-full-width'>Search</a>
+      <%= form_tag '/', :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+    <% end %>
     </card>
   </sidebar>
 </div>
+
+<%= paginate @events %>

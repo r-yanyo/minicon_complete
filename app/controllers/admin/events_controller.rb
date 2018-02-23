@@ -54,6 +54,6 @@ class Admin::EventsController < Admin::BaseController
   
     def event_params
       params.require(:event)
-            .permit(:title, :location, :start_at, :ticket_price, :ticket_quantity, :event_category_id)
+            .permit(:title, :location, :start_at, :ticket_price, :ticket_quantity, :event_category_id, :banner)
     end
 end

@@ -31,6 +31,11 @@
     <%= form.text_field :ticket_quantity, id: :event_ticket_quantity %>
   </div>
 
+  <div class="field">
+    <%= form.label :banner %>
+    <%= form.file_field :banner, id: :event_banner %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
